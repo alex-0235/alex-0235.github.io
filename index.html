@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장기진 - 서비스 프로세스 전문가</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+
+        .core-competency {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
+        }
+
+        .achievement-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .achievement-list {
+            list-style: none;
+        }
+
+        .achievement-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .achievement-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .experience-item {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .company-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .position {
+            font-size: 1.2rem;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .period {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .responsibility-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .responsibility-list li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .responsibility-list li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .sub-list {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        .sub-list li::before {
+            content: '→';
+            color: #764ba2;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .education-item, .award-item {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .intro-text {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .intro-section {
+            margin-bottom: 25px;
+        }
+
+        .intro-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>장기진</h1>
+                <div class="subtitle">서비스 프로세스 기획 및 운영 전문가</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>truebase1@naver.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>+82-10-5313-3053</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">핵심 역량</h2>
+            <div class="core-competency">
+                End-to-End 서비스 프로세스를 기획하고 운영 최적화를 통해 고객 만족을 실현해 온 전문가입니다. 
+                다양한 산업군에서의 경험을 바탕으로, 데이터 기반의 의사결정과 기술적 혁신을 결합하여 사용자 중심의 프로세스 혁신을 구현해왔으며, 
+                서비스 제공자의 행동과 고객 경험을 유기적으로 연결하는 운영 전략 수립에 강점을 지니고 있습니다.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">주요 성과</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <h3>🧺 런드리고</h3>
+                    <ul class="achievement-list">
+                        <li>RFID 태그 및 4K 카메라 도입으로 입고 운영 효율 60% 단축</li>
+                        <li>출고 프로세스 개선을 통한 출고시간 1.5Hr 단축</li>
+                        <li>세탁 정확도 8% 향상</li>
+                        <li>월 발생 고객 불만율 85% 개선</li>
+                    </ul>
+                </div>
+                
+                <div class="achievement-card">
+                    <h3>🚗 VCNC 타다</h3>
+                    <ul class="achievement-list">
+                        <li>드라이버 서비스 정책 수립 및 운영 관리</li>
+                        <li>고객 만족도 4.85/5 달성</li>
+                        <li>일 최대 1,500명 드라이버 투입 및 관리</li>
+                        <li>모빌리티 아카데미 설립 및 드라이버 교육 기획</li>
+                    </ul>
+                </div>
+                
+                <div class="achievement-card">
+                    <h3>📦 쿠팡</h3>
+                    <ul class="achievement-list">
+                        <li>로켓배송 배송거점 +10개소 확대</li>
+                        <li>배송 상품 확대 (중량물 및 생수 외)</li>
+                        <li>전국 8개 중소도시 D+1 배송율 99% 유지</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">경력 사항</h2>
+            
+            <div class="experience-item">
+                <div class="company-name">(주)의식주컴퍼니 런드리고</div>
+                <div class="position">입출고관리부 부장</div>
+                <div class="period">2023.03 ~ 2025.01</div>
+                <ul class="responsibility-list">
+                    <li>군포 스마트 팩토리, 입고/출고 현장 관리</li>
+                    <li>Process Innovation to Improve Productivity
+                        <ul class="sub-list">
+                            <li>RFID & New TAG 도입 → 세탁 정확도 +8% Up</li>
+                            <li>검수 강화를 위한 4K 카메라 녹화 시스템 도입</li>
+                            <li>생활 빨래 검수 프로세스 개선 → 월 발생 고객 불만율 85% 개선</li>
+                            <li>배송 준비시간 단축 → 1.5Hr 단축</li>
+                        </ul>
+                    </li>
+                    <li>정기 고객 리텐션 프로그램 기획, 운영 관리 (보관서비스)
+                        <ul class="sub-list">
+                            <li>정기 고객 이탈율 35% 개선</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-name">브이씨엔씨(주) 타다</div>
+                <div class="position">파트너성장팀 매니저 / GnM Team Lead</div>
+                <div class="period">2019.01 ~ 2022.01</div>
+                <ul class="responsibility-list">
+                    <li>타다 넥스트 서비스 정책 수립 및 드라이버 교육 총괄</li>
+                    <li>"모빌리티 아카데미" 평생교육기관 설립 총괄 및 운영, 강의</li>
+                    <li>타다 서비스 별 드라이버 서비스 정책 수립 및 교육 총괄
+                        <ul class="sub-list">
+                            <li>서비스 종류: 베이직 / 어시스트 / 플러스 / 라이트 / 대리</li>
+                        </ul>
+                    </li>
+                    <li>Quality Data Management of Driver
+                        <ul class="sub-list">
+                            <li>일 최대 1,500명 관리 (총 가입 드라이버 9,000명)</li>
+                            <li>활용 프로그램: "R" & "Tableau"</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-name">쿠팡(주)</div>
+                <div class="position">Logistics Data Analyst / 파트너 로지스틱스 팀장 / 오아시스 기획팀장</div>
+                <div class="period">2014.08 - 2019.01</div>
+                <ul class="responsibility-list">
+                    <li>택배 배송 서비스 효율화 기획 및 운영
+                        <ul class="sub-list">
+                            <li>전국 8개 중소도시 D+1 배송율 평균 99% 유지</li>
+                        </ul>
+                    </li>
+                    <li>로켓배송 Service Innovation 기획 및 운영</li>
+                    <li>TOYOTA Lean System to COUPANG Fulfillment, T/F 참여</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company-name">(주)한진</div>
+                <div class="position">다양한 부서 팀장 및 센터장</div>
+                <div class="period">1997.09 - 2014.08</div>
+                <ul class="responsibility-list">
+                    <li>유류판매사업부 마케팅/Sales 기획 담당</li>
+                    <li>유통택배그룹장 - 메이저 유통업체 BtoB 및 BtoC 물류 기획, 운영</li>
+                    <li>택배센터 센터장 - 서울시 강남구 택배 배송센터 운영</li>
+                    <li>현대/기아자동차 부품 협력사 지원 시스템 "Vattz" 물류사 부문 기획 총괄</li>
+                    <li>ISO9001 인증 취득 및 유지 관련 택배부문 담당자</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">학력 & 자격증</h2>
+            <div class="education-item">
+                <strong>경희대학교 경영대학원</strong><br>
+                경영컨설팅학과 경영학 석사 (2005.03 - 2008.02)
+            </div>
+            <div class="education-item">
+                <strong>단국대학교</strong><br>
+                일어일문학과 일어일문학 학사 (1989.03 - 1995.02)
+            </div>
+            <div class="award-item">
+                <strong>평생교육사 2급 취득</strong> (2024년 2월)
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">전문 스킬</h2>
+            <div class="skills-container">
+                <span class="skill-tag">프로세스 기획 및 운영</span>
+                <span class="skill-tag">Process Innovation</span>
+                <span class="skill-tag">물류 관리</span>
+                <span class="skill-tag">배송 최적화</span>
+                <span class="skill-tag">유통 전략</span>
+                <span class="skill-tag">서비스 품질 관리</span>
+                <span class="skill-tag">서비스 교육 관리</span>
+                <span class="skill-tag">데이터 분석 (R, Tableau)</span>
+                <span class="skill-tag">일본어 (일상회화)</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">자기소개</h2>
+            <div class="intro-text">
+                <div class="intro-section">
+                    <h3>🎯 구체적인 결과를 위한 노력</h3>
+                    <p>물류업체 및 쿠팡에서의 배송 드라이버 운영 관리 및 데이터 기반 업무 경험을 바탕으로 이동서비스 플랫폼 "타다"에서 드라이버 퀄리티 관리 팀 리드를 담당했습니다. 서비스 개시 초기의 데이터 부족과 수요 급증 상황에서도 체계적인 프로세스 가이드 제작과 교육 시스템을 구축하여 궁극적으로 좋은 이용자 경험을 통한 신규 수요 창출과 유지를 실현했습니다.</p>
+                </div>
+                
+                <div class="intro-section">
+                    <h3>✨ 긍정적인 마인드</h3>
+                    <p>아무리 힘들고 어려운 일도 긍정적인 마인드로 열정을 가지고 접근하면 'Impossible is Nothing!'이라고 믿습니다. 긍정적으로 인생을 즐기면서 사는 것이 즐겁게 일할 수 있는 힘이라는 신조로 살아가고 있습니다.</p>
+                </div>
+                
+                <div class="intro-section">
+                    <h3>🚀 Motivation</h3>
+                    <p>국내 최고의 물류회사에서 유통·물류 전반의 경험을 쌓고, 이후 쿠팡에서는 서비스 제공자와 소비자 양 측면에서 고객 경험을 분석해 새로운 서비스 프로세스를 도입하고 실행해 왔습니다. 데이터 기반의 운영 개선과 고객 만족 향상을 일관되게 추구해 온 경험을 바탕으로, 다시 고객 중심의 서비스를 직접 설계하고 성과를 만들어낼 수 있는 역할을 찾고자 합니다.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
