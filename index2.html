@@ -15,7 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4a6fa5 0%, #5d7db8 50%, #7a94c7 100%);
             min-height: 100vh;
         }
         
@@ -41,7 +41,7 @@
             font-weight: 700;
             color: #2c3e50;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #4a6fa5, #5d7db8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -108,56 +108,81 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #4a6fa5, #5d7db8);
             border-radius: 2px;
         }
         
         .competencies {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
             margin-top: 20px;
         }
         
         .competency-card {
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 25px;
+            padding: 20px;
             border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s ease;
             border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .competency-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #4a6fa5, #5d7db8);
         }
         
         .competency-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            box-shadow: 0 10px 30px rgba(74, 111, 165, 0.2);
+            background: linear-gradient(135deg, #4a6fa5, #5d7db8);
             color: white;
         }
         
         .competency-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
             color: #2c3e50;
+            font-weight: 600;
         }
         
         .competency-card:hover h3 {
             color: white;
         }
         
-        .competency-card ul {
+        .competency-card .skills-list {
             list-style: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #666;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         
-        .competency-card:hover ul {
+        .competency-card:hover .skills-list {
             color: rgba(255, 255, 255, 0.9);
         }
         
-        .competency-card li {
-            margin-bottom: 8px;
-            padding: 5px 0;
+        .competency-card .skill-item {
+            background: rgba(74, 111, 165, 0.1);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(74, 111, 165, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .competency-card:hover .skill-item {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
         }
         
         .timeline {
@@ -172,7 +197,7 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(to bottom, #667eea, #764ba2);
+            background: linear-gradient(to bottom, #4a6fa5, #5d7db8);
             border-radius: 2px;
         }
         
@@ -182,7 +207,7 @@
             background: #f8f9fa;
             padding: 25px;
             border-radius: 12px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #4a6fa5;
             transition: all 0.3s ease;
         }
         
@@ -199,9 +224,9 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #667eea;
+            background: #4a6fa5;
             border: 3px solid #fff;
-            box-shadow: 0 0 0 3px #667eea;
+            box-shadow: 0 0 0 3px #4a6fa5;
         }
         
         .timeline-item h3 {
@@ -263,7 +288,7 @@
             background: linear-gradient(135deg, #f1f3f4, #e8eaf6);
             padding: 25px;
             border-radius: 12px;
-            border-left: 4px solid #3f51b5;
+            border-left: 4px solid #4a6fa5;
             transition: all 0.3s ease;
         }
         
@@ -284,27 +309,77 @@
             margin-bottom: 10px;
         }
         
+        .skills-container {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #dee2e6;
+        }
+        
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
         }
         
         .skill-tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #4a6fa5, #5d7db8);
             color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
+            padding: 10px 16px;
+            border-radius: 20px;
             text-align: center;
             font-weight: 500;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .skill-tag:hover::before {
+            left: 100%;
         }
         
         .skill-tag:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 111, 165, 0.3);
+            background: linear-gradient(135deg, #5d7db8, #7a94c7);
+        }
+        
+        .skills-category {
+            margin-bottom: 20px;
+        }
+        
+        .skills-category h3 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .skills-category h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, #4a6fa5, #5d7db8);
+            border-radius: 2px;
         }
         
         .footer {
@@ -335,6 +410,10 @@
             
             .competencies {
                 grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -378,35 +457,39 @@
             <div class="competencies">
                 <div class="competency-card">
                     <h3>전략기획</h3>
-                    <ul>
-                        <li>사업계획수립</li>
-                        <li>IR 자료 작성</li>
-                        <li>조직운영/성과관리</li>
-                    </ul>
+                    <div class="skills-list">
+                        <span class="skill-item">사업계획수립</span>
+                        <span class="skill-item">IR 자료 작성</span>
+                        <span class="skill-item">조직운영</span>
+                        <span class="skill-item">성과관리</span>
+                    </div>
                 </div>
                 <div class="competency-card">
                     <h3>마케팅/브랜딩</h3>
-                    <ul>
-                        <li>브랜드 런칭 전략</li>
-                        <li>홈쇼핑/와디즈 런칭</li>
-                        <li>디지털 마케팅</li>
-                    </ul>
+                    <div class="skills-list">
+                        <span class="skill-item">브랜드 런칭</span>
+                        <span class="skill-item">홈쇼핑 런칭</span>
+                        <span class="skill-item">와디즈 런칭</span>
+                        <span class="skill-item">디지털 마케팅</span>
+                    </div>
                 </div>
                 <div class="competency-card">
                     <h3>대관/정부과제</h3>
-                    <ul>
-                        <li>식약처 대응 및 인증</li>
-                        <li>정부과제 제안 실행</li>
-                        <li>기관 협업 커뮤니케이션</li>
-                    </ul>
+                    <div class="skills-list">
+                        <span class="skill-item">식약처 대응</span>
+                        <span class="skill-item">인증 업무</span>
+                        <span class="skill-item">정부과제 제안</span>
+                        <span class="skill-item">기관 협업</span>
+                    </div>
                 </div>
                 <div class="competency-card">
                     <h3>글로벌 수출입</h3>
-                    <ul>
-                        <li>미국, 일본, 사우디 등록</li>
-                        <li>다국가 인증 및 제품 수출</li>
-                        <li>FDA 및 해외 비즈니스</li>
-                    </ul>
+                    <div class="skills-list">
+                        <span class="skill-item">미국 등록</span>
+                        <span class="skill-item">일본 수출</span>
+                        <span class="skill-item">사우디 인증</span>
+                        <span class="skill-item">FDA 업무</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -494,19 +577,46 @@
 
         <div class="section fade-in">
             <h2>전문 스킬 & 자격</h2>
-            <div class="skills-grid">
-                <div class="skill-tag">IPO 실무 경험</div>
-                <div class="skill-tag">화장품책임판매관리자</div>
-                <div class="skill-tag">브랜드 런칭</div>
-                <div class="skill-tag">홈쇼핑 운영</div>
-                <div class="skill-tag">해외 수출입</div>
-                <div class="skill-tag">FDA 등록</div>
-                <div class="skill-tag">식약처 대관</div>
-                <div class="skill-tag">정부과제 수주</div>
-                <div class="skill-tag">디지털 마케팅</div>
-                <div class="skill-tag">IR 자료 작성</div>
-                <div class="skill-tag">아로마테라피</div>
-                <div class="skill-tag">바리스타</div>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3>핵심 경험</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">IPO 실무 경험</div>
+                        <div class="skill-tag">코스닥 상장사 근무</div>
+                        <div class="skill-tag">브랜드 런칭</div>
+                        <div class="skill-tag">홈쇼핑 운영</div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3>규제 & 인증</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">화장품책임판매관리자</div>
+                        <div class="skill-tag">FDA 등록</div>
+                        <div class="skill-tag">식약처 대관</div>
+                        <div class="skill-tag">사우디 인증</div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3>마케팅 & 채널</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">무신사 입점</div>
+                        <div class="skill-tag">와디즈 런칭</div>
+                        <div class="skill-tag">디지털 마케팅</div>
+                        <div class="skill-tag">해외 수출입</div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3>기타 자격</h3>
+                    <div class="skills-grid">
+                        <div class="skill-tag">정부과제 수주</div>
+                        <div class="skill-tag">IR 자료 작성</div>
+                        <div class="skill-tag">아로마테라피</div>
+                        <div class="skill-tag">바리스타</div>
+                    </div>
+                </div>
             </div>
         </div>
 
