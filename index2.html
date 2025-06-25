@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김영희 - 전략기획 & 마케팅 전문가</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: #34495e;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .hero .experience {
+            font-size: 1.8rem;
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .section h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .competencies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .competency-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #dee2e6;
+        }
+        
+        .competency-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .competency-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .competency-card:hover h3 {
+            color: white;
+        }
+        
+        .competency-card ul {
+            list-style: none;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        .competency-card:hover ul {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .competency-card li {
+            margin-bottom: 8px;
+            padding: 5px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+        
+        .timeline-item h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item .period {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .timeline-item .company {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .achievements {
+            margin-top: 15px;
+        }
+        
+        .achievements h4 {
+            color: #27ae60;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .achievements li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+        }
+        
+        .achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .education-card {
+            background: linear-gradient(135deg, #f1f3f4, #e8eaf6);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #3f51b5;
+            transition: all 0.3s ease;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .education-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .education-card .grade {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 25px;
+                margin-bottom: 20px;
+            }
+            
+            .competencies {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero fade-in">
+            <h1>김영희</h1>
+            <p class="subtitle">전략기획 · 마케팅 · 대관업무 전문가</p>
+            <p class="subtitle">바이오 / 제약 / 의료기기 / 화장품 산업 특화</p>
+            <div class="experience">22년 3개월 경력</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>yh5835@naver.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>010-9488-0235</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>서울 송파구</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>핵심 역량</h2>
+            <div class="competencies">
+                <div class="competency-card">
+                    <h3>전략기획</h3>
+                    <ul>
+                        <li>사업계획수립</li>
+                        <li>IR 자료 작성</li>
+                        <li>조직운영/성과관리</li>
+                    </ul>
+                </div>
+                <div class="competency-card">
+                    <h3>마케팅/브랜딩</h3>
+                    <ul>
+                        <li>브랜드 런칭 전략</li>
+                        <li>홈쇼핑/와디즈 런칭</li>
+                        <li>디지털 마케팅</li>
+                    </ul>
+                </div>
+                <div class="competency-card">
+                    <h3>대관/정부과제</h3>
+                    <ul>
+                        <li>식약처 대응 및 인증</li>
+                        <li>정부과제 제안 실행</li>
+                        <li>기관 협업 커뮤니케이션</li>
+                    </ul>
+                </div>
+                <div class="competency-card">
+                    <h3>글로벌 수출입</h3>
+                    <ul>
+                        <li>미국, 일본, 사우디 등록</li>
+                        <li>다국가 인증 및 제품 수출</li>
+                        <li>FDA 및 해외 비즈니스</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>주요 경력사항</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>에코동물병원 전략기획실장</h3>
+                    <div class="period">2025.04 ~ 현재</div>
+                    <div class="company">국내 최대규모 반려동물 전문병원</div>
+                    <div class="achievements">
+                        <h4>주요 업무</h4>
+                        <ul>
+                            <li>시장분석, 마케팅 전략 및 홍보, 학회 세미나</li>
+                            <li>온라인 채널 컨텐츠 기획, 프로모션</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>㈜올리패스 알엔에이 경영전략부 이사</h3>
+                    <div class="period">2020.06 ~ 2022.12</div>
+                    <div class="company">사이언스 뷰티 전문기업</div>
+                    <div class="achievements">
+                        <h4>주요 성과</h4>
+                        <ul>
+                            <li>무신사 입점: HR.101 안티헤어로스 앰플 성공적 입점</li>
+                            <li>와디즈 런칭: 펀딩 목표 200% 초과 달성</li>
+                            <li>롯데홈쇼핑 OLV 런칭</li>
+                            <li>태국 수출: 제품 등록 및 수출 성공</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>메디포스트㈜ CM 기획팀장</h3>
+                    <div class="period">2013.06 ~ 2019.02</div>
+                    <div class="company">세계적인 줄기세포 전문 연구 및 제약사 (코스닥 상장)</div>
+                    <div class="achievements">
+                        <h4>주요 성과</h4>
+                        <ul>
+                            <li>줄기세포 기반 화장품 브랜드 런칭</li>
+                            <li>중국위생허가 진행, 미국 FDA 제품 등록</li>
+                            <li>NET 인증 획득, 정부 과제 수주 (총 1.2억 규모)</li>
+                            <li>사우디아라비아 제품 등록 및 수출</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>㈜이네트 커뮤니케이션팀 과장</h3>
+                    <div class="period">1999.04 ~ 2004.12</div>
+                    <div class="company">이커머스 솔루션 개발회사 (코스닥 상장)</div>
+                    <div class="achievements">
+                        <h4>주요 성과</h4>
+                        <ul>
+                            <li>한국 전자상거래 대상 수상 (정통부 장관상)</li>
+                            <li>코스닥 등록 지원</li>
+                            <li>IPO 실무 경험 축적</li>
+                            <li>IR/PR 담당, 브랜딩 작업</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>학력사항</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>건국대학교 산업대학원</h3>
+                    <div class="grade">향장학과 성적우수 졸업</div>
+                    <p>2018.03 ~ 2020.08</p>
+                    <p>GPA: 4.46/4.5 (35기)</p>
+                </div>
+                <div class="education-card">
+                    <h3>중앙대학교 공과대학</h3>
+                    <div class="grade">화학공학과 졸업</div>
+                    <p>1994.03 ~ 1999.02</p>
+                    <p>본교 (흑석동)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>전문 스킬 & 자격</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">IPO 실무 경험</div>
+                <div class="skill-tag">화장품책임판매관리자</div>
+                <div class="skill-tag">브랜드 런칭</div>
+                <div class="skill-tag">홈쇼핑 운영</div>
+                <div class="skill-tag">해외 수출입</div>
+                <div class="skill-tag">FDA 등록</div>
+                <div class="skill-tag">식약처 대관</div>
+                <div class="skill-tag">정부과제 수주</div>
+                <div class="skill-tag">디지털 마케팅</div>
+                <div class="skill-tag">IR 자료 작성</div>
+                <div class="skill-tag">아로마테라피</div>
+                <div class="skill-tag">바리스타</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 김영희 포트폴리오. 전략기획 & 마케팅 전문가</p>
+        </div>
+    </div>
+
+    <script>
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 부드러운 스크롤 효과
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.competency-card, .timeline-item, .education-card');
+            
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // 스킬 태그 클릭 효과
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.05)';
+                }, 100);
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
